@@ -1,0 +1,63 @@
+import { REALTIME_DB_URL, firestore } from '../firebase'
+import { collection, addDoc } from 'firebase/firestore'
+
+// Lấy các đơn hàng theo email người dùng từ Realtime DB
+export const getOrdersFromUser = async email => {
+  try {
+    const response = await fetch(`${REALTIME_DB_URL}/orders.json`)
+    if (!response.ok) {
+      throw new Error('Something went wrong!')
+    }
+
+    const data = await response.json()
+
+    if (data) {
+      return Object.entries(data)
+        .filter(([key, order]) => order.userId === email)
+        .map(([key, order]) => ({ ...order, id: key }))
+    } else {
+      return []
+    }
+  } catch (error) {
+    throw new Error(error.message)
+  }
+}
+
+// Tạo đơn hàng mới
+export const createOrder = async order => {
+  try {
+    // Gửi lên Realtime DB
+    await fetch(`${REALTIME_DB_URL}/orders.json`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order)
+    })
+
+    // Gửi thêm lên Firestore
+    const plainOrder = JSON.parse(JSON.stringify(order));
+    console.log('Saving order to Firestore:', plainOrder);
+
+    await addDoc(collection(firestore, 'orders'), plainOrder);
+    console.log('Order saved to Firestore successfully');
+
+    return order;
+  } catch (error) {
+    console.error('Error in createOrder:', error);
+    throw new Error(error.message);
+  }
+}
+
+// Xoá đơn hàng theo ID khỏi Realtime DB
+export const deleteOrderById = async (orderId) => {
+  try {
+    const response = await fetch(`${REALTIME_DB_URL}/orders/${orderId}.json`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error('Không thể xoá đơn hàng!');
+    }
+    return true;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "FeastNow",
+    "slug": "feastnow",
+    "description": "Food delivery app",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/FeastNow.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#FFC329"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/your-project-id",
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.foodie",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.foodie",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/FeastNow.png",
+        "backgroundColor": "#292D25"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "jsEngine": "jsc",
+    "plugins": [
+      
+    ]
+  }
+}
