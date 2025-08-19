@@ -76,12 +76,12 @@ const HomeScreen = ({ navigation }) => {
     <>
       <DismissKeyboardView style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerSubtitle}>Welcome {getFirstName(user.fullName)},</Text>
-          <Text style={styles.headerTitleDecor}>Enjoy your meal!</Text>
+          <Text style={styles.headerSubtitle}>Xin chào {getFirstName(user.fullName)},</Text>
+          <Text style={styles.headerTitleDecor}>Tận hưởng món ăn ngon miệng</Text>
         </View>
 
         <View style={{marginTop: 18, marginBottom: 16}}>
-          <SearchBar placeholder="Search Places" search={search} setSearch={setSearch} />
+          <SearchBar placeholder="Tìm kiếm quán ăn" search={search} setSearch={setSearch} />
         </View>
 
         <View style={[styles.tagFilterContainer, {marginBottom: 8}]}>

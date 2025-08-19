@@ -31,7 +31,7 @@ const PaymentScreen = ({ navigation }) => {
               />
 
               <View style={styles.paymentMethodDataContent}>
-                <Text style={styles.paymentMethodDataTitle}>Pay cash on delivery</Text>
+                <Text style={styles.paymentMethodDataTitle}>Thanh toán tiền mặt</Text>
                 <Text style={styles.paymentMethodDataFee}>Fee: $0.00</Text>
               </View>
             </View>
@@ -53,7 +53,7 @@ const PaymentScreen = ({ navigation }) => {
               />
 
               <View style={styles.paymentMethodDataContent}>
-                <Text style={styles.paymentMethodDataTitle}>Credit/Debit Card</Text>
+                <Text style={styles.paymentMethodDataTitle}>Thẻ tín dụng</Text>
                 <Text style={styles.paymentMethodDataFee}>Fee: $0.00</Text>
               </View>
             </View>

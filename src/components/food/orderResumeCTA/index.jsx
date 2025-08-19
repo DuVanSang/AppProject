@@ -18,7 +18,7 @@ const OrderResumeCTA = ({ text, total, navigateTo, handlePlaceOrder, itemsLength
   return (
     <View style={styles.orderResume}>
       <View style={styles.orderResumePrice}>
-        <Text style={styles.orderResumePriceText}>Total order:</Text>
+        <Text style={styles.orderResumePriceText}>Tổng tiền:</Text>
         <Text style={styles.orderResumePriceAmount}>${total.toFixed(2)}</Text>
       </View>
       <TouchableOpacity onPress={handlePress}>

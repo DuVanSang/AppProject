@@ -31,13 +31,13 @@ const HomeScreen = ({ navigation }) => {
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Personal Information</Text>
+          <Text style={styles.sectionTitle}>Thông tin cá nhân</Text>
 
           <TouchableOpacity onPress={() => navigation.navigate('Addresses')}>
             <View style={styles.sectionItem}>
               <View style={styles.sectionItemLeft}>
                 <MaterialIcons name="location-on" size={24} color={theme.colors.black} />
-                <Text style={styles.sectionItemText}>Addresses</Text>
+                <Text style={styles.sectionItemText}>Địa chỉ</Text>
               </View>
               <MaterialIcons name="keyboard-arrow-right" size={24} color={theme.colors.black} />
             </View>
@@ -47,7 +47,7 @@ const HomeScreen = ({ navigation }) => {
             <View style={styles.sectionItem}>
               <View style={styles.sectionItemLeft}>
                 <MaterialCommunityIcons name="credit-card-outline" size={24} color={theme.colors.black} />
-                <Text style={styles.sectionItemText}>Payment</Text>
+                <Text style={styles.sectionItemText}>Thẻ tín dụng</Text>
               </View>
               <MaterialIcons name="keyboard-arrow-right" size={24} color={theme.colors.black} />
             </View>
@@ -57,7 +57,7 @@ const HomeScreen = ({ navigation }) => {
             <View style={styles.sectionItem}>
               <View style={styles.sectionItemLeft}>
                 <MaterialIcons name="info" size={24} color={theme.colors.black} />
-                <Text style={styles.sectionItemText}>Information</Text>
+                <Text style={styles.sectionItemText}>Thông tin</Text>
               </View>
               <MaterialIcons name="keyboard-arrow-right" size={24} color={theme.colors.black} />
             </View>
@@ -70,7 +70,7 @@ const HomeScreen = ({ navigation }) => {
           <View style={styles.sectionItem}>
             <View style={styles.sectionItemLeft}>
               <MaterialIcons name="notifications" size={24} color={theme.colors.black} />
-              <Text style={styles.sectionItemText}>Enable Notifications</Text>
+              <Text style={styles.sectionItemText}>Bật thông báo</Text>
             </View>
             <TouchableOpacity onPress={() => setNotifications(prev => !prev)}>
               <View

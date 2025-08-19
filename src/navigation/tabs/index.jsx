@@ -33,7 +33,7 @@ const TabsNavigator = () => {
       }}
     >
       <Tab.Screen
-        name="Food"
+        name="Món ăn"
         component={FoodNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -42,7 +42,7 @@ const TabsNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Orders"
+        name="Đơn hàng"
         component={OrdersNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -51,7 +51,7 @@ const TabsNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="Thông tin cá nhân"
         component={ProfileNavigator}
         options={{
           tabBarIcon: ({ focused }) => (

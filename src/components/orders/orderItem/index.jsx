@@ -20,6 +20,9 @@ const OrderItem = ({ order }) => {
               <Text style={styles.orderDataTopSubtitle}>{order.address.address}</Text>
             </View>
             <View style={styles.orderDataBottom}>
+              <Text style={{ color: order.status === 'delivered' ? 'green' : 'orange', fontWeight: 'bold', marginRight: 8 }}>
+                {order.status === 'delivered' ? 'Đã giao' : 'Đang giao'}
+              </Text>
               <Text style={styles.orderDataBottomPrice}>${order.total.toFixed(2)}</Text>
               <Text style={styles.orderDataBottomPayment}>{order.payment}</Text>
             </View>

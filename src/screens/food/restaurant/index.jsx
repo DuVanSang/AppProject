@@ -155,7 +155,7 @@ const RestaurantScreen = ({ route, navigation }) => {
           </View>
           <TouchableOpacity onPress={handlePlaceOrder}>
             <View style={styles.placeOrderCTA}>
-              <Text style={styles.placeOrderCTAText}>Place Order</Text>
+              <Text style={styles.placeOrderCTAText}>Đặt hàng</Text>
               <View style={styles.placeOrderCTAQty}>
                 <Text style={styles.placeOrderCTAQtyText}>{orderItems.length}</Text>
               </View>

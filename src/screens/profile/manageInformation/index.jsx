@@ -116,7 +116,7 @@ const ManageInformationScreen = ({ navigation }) => {
 
   return (
     <DismissKeyboardView style={styles.container}>
-      <NavigationHeader text="Manage Information" />
+      <NavigationHeader text="Thông tin cá nhân" />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.avatarItem}>
@@ -131,14 +131,14 @@ const ManageInformationScreen = ({ navigation }) => {
               <TouchableOpacity onPress={handleSelectFromLibrary}>
                 <View style={styles.changeImgOption}>
                   <MaterialIcons name="image" size={16} color={theme.colors.black} />
-                  <Text style={styles.changeImgText}>Select from your photos</Text>
+                  <Text style={styles.changeImgText}>Chọn từ thư viện</Text>
                 </View>
               </TouchableOpacity>
 
               <TouchableOpacity onPress={handleTakeImage}>
                 <View style={styles.changeImgOption}>
                   <MaterialIcons name="camera-alt" size={16} color={theme.colors.black} />
-                  <Text style={styles.changeImgText}>Take a picture</Text>
+                  <Text style={styles.changeImgText}>Chụp ảnh</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -147,10 +147,10 @@ const ManageInformationScreen = ({ navigation }) => {
 
         <View style={styles.item}>
           <Input
-            label="Full Name"
+            label="Họ và tên"
             value={formState.fullName}
             onChangeText={text => setFormState(prev => ({ ...prev, fullName: text }))}
-            placeholder="Enter your fullname"
+            placeholder="Nhập họ và tên"
             placeholderTextColor={theme.colors.black}
             autoCapitalize="words"
             autoComplete="name"
@@ -169,7 +169,7 @@ const ManageInformationScreen = ({ navigation }) => {
 
         <View style={styles.item}>
           <Input
-            label="Phone"
+            label="Số điện thoại"
             value={formState.phone}
             onChangeText={text => setFormState(prev => ({ ...prev, phone: text }))}
             placeholder="Enter your phone number"

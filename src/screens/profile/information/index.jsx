@@ -14,7 +14,7 @@ const InformationScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <NavigationHeader text="Your Information" />
+      <NavigationHeader text="Thông tin của bạn" />
 
       <View style={styles.imgContainer}>
         <Image style={styles.image} resizeMode="contain" source={{ uri: user.imgUrl }} />
@@ -22,7 +22,7 @@ const InformationScreen = ({ navigation }) => {
 
       <View style={styles.informationItem}>
         <View style={styles.informationItemLeft}>
-          <Text style={styles.informationItemLeftLabel}>FullName</Text>
+          <Text style={styles.informationItemLeftLabel}>Họ và tên</Text>
           <Text style={styles.informationItemLeftText}>{user.fullName}</Text>
         </View>
         <MaterialIcons name="person-outline" size={24} color={theme.colors.black} />
@@ -38,7 +38,7 @@ const InformationScreen = ({ navigation }) => {
 
       <View style={styles.informationItem}>
         <View style={styles.informationItemLeft}>
-          <Text style={styles.informationItemLeftLabel}>Phone</Text>
+          <Text style={styles.informationItemLeftLabel}>Số điện thoại</Text>
           <Text style={styles.informationItemLeftText}>{user.phone}</Text>
         </View>
         <MaterialIcons name="phone-iphone" size={24} color={theme.colors.black} />
@@ -48,7 +48,7 @@ const InformationScreen = ({ navigation }) => {
 
       <TouchableOpacity onPress={() => navigation.navigate('ManageInformation')}>
         <View style={styles.editBtn}>
-          <Text style={styles.editText}>Edit</Text>
+          <Text style={styles.editText}>Chỉnh sửa</Text>
         </View>
       </TouchableOpacity>
     </View>

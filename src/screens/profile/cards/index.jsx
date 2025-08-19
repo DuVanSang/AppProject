@@ -10,11 +10,34 @@ import { styles } from './styles'
 import { clearOpenAddCard } from '../../../store/ui.slice'
 import AddCardInline from '../../food/cards/AddCardInline'
 
+import { Alert } from 'react-native'
+import { removeCard } from '../../../store/auth.slice'
+
 const CardsScreen = ({ navigation }) => {
-  const { cards } = useSelector(state => state.auth)
+  const { cards, user } = useSelector(state => state.auth)
   const openAddCard = useSelector(state => state.ui.openAddCard)
   const dispatch = useDispatch()
   const [showAddCard, setShowAddCard] = useState(false)
+
+  const handleDeleteCard = (card) => {
+    Alert.alert(
+      'Xoá',
+      'Bạn có chắc chắn muốn xoá thẻ này không?',
+      [
+        { text: 'Huỷ', style: 'cancel' },
+        {
+          text: 'Xoá',
+          style: 'destructive',
+          onPress: () => {
+            if (user?.email && card?.id) {
+              dispatch(removeCard({ email: user.email, id: card.id }))
+            }
+          }
+        }
+      ],
+      { userInterfaceStyle: 'light' }
+    )
+  }
 
   useEffect(() => {
     if (openAddCard) {
@@ -25,7 +48,7 @@ const CardsScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <NavigationHeader text="Your Cards" />
+      <NavigationHeader text="Thẻ của bạn" />
 
       <ScrollView>
         <View>
@@ -35,7 +58,7 @@ const CardsScreen = ({ navigation }) => {
           )}
 
           {cards?.map((card, index) => (
-            <TouchableOpacity key={index} onPress={() => navigation.navigate('ManageCard', { card })}>
+            <View key={index}>
               <View style={styles.cardItem}>
                 <View style={styles.cardData}>
                   <Image
@@ -53,9 +76,11 @@ const CardsScreen = ({ navigation }) => {
                   </View>
                 </View>
 
-                <MaterialCommunityIcons name="dots-vertical" size={24} color={theme.colors.gray} />
+                <TouchableOpacity onPress={() => handleDeleteCard(card)}>
+  <MaterialCommunityIcons name="dots-vertical" size={24} color={theme.colors.gray} />
+</TouchableOpacity>
               </View>
-            </TouchableOpacity>
+            </View>
           ))}
 
           <View style={styles.separatorBar}></View>
@@ -63,7 +88,7 @@ const CardsScreen = ({ navigation }) => {
           <TouchableOpacity onPress={() => setShowAddCard(true)}>
             <View style={styles.addCardBtn}>
               <Text style={styles.addCardBtnIcon}>+</Text>
-              <Text style={styles.addCardBtnText}>Add a new card</Text>
+              <Text style={styles.addCardBtnText}>Thêm thẻ mới</Text>
             </View>
           </TouchableOpacity>
         </View>

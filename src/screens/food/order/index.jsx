@@ -31,7 +31,7 @@ const OrderScreen = ({ navigation }) => {
         style={styles.orderList}
       />
 
-      <OrderResumeCTA text="Place Order" total={total} navigateTo="Checkout" itemsLength={items.length} />
+      <OrderResumeCTA text="Đặt hàng" total={total} navigateTo="Checkout" itemsLength={items.length} />
     </View>
   )
 }

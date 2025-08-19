@@ -26,12 +26,12 @@ const ManageCardScreen = ({ route, navigation }) => {
 
   const handleDelete = () => {
     return Alert.alert(
-      'Delete',
-      'Are you sure you want to delete this card?',
+      'Xoá',
+      'Bạn có chắc chắn muốn xoá thẻ này không?',
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: 'Huỷ', style: 'cancel' },
         {
-          text: 'Delete',
+          text: 'Xoá',
           style: 'destructive',
           onPress: () => {
             dispatch(removeCard({ email: user.email, id: card.id }))
@@ -158,13 +158,13 @@ const ManageCardScreen = ({ route, navigation }) => {
 
         <TouchableOpacity onPress={handleDelete}>
           <View style={styles.deleteBtn}>
-            <Text style={styles.deleteBtnText}>Delete</Text>
+            <Text style={styles.deleteBtnText}>Xoá</Text>
           </View>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={handleSave}>
           <View style={styles.saveBtn}>
-            <Text style={styles.saveBtnText}>Save</Text>
+            <Text style={styles.saveBtnText}>Lưu</Text>
           </View>
         </TouchableOpacity>
       </ScrollView>

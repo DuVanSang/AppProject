@@ -37,16 +37,18 @@ const DetailScreen = ({ route, navigation }) => {
         <View style={styles.contentHeader}>
           <View style={styles.contentHeaderText}>
             <Text style={styles.contentHeaderSubtitle}>{item.category}</Text>
-            <Text style={styles.contentHeaderTitle}>{item.name}</Text>
+            <Text style={styles.headerTitle}>Chi tiết món ăn</Text>
           </View>
           <Text style={styles.contentHeaderPrice}>${item.price.toFixed(2)}</Text>
         </View>
 
         <View style={styles.contentRating}>
           <StarsRating stars={item.stars} />
+          <Text style={styles.sectionTitle}>Đánh giá</Text>
           <Text style={styles.contentRatingText}>{item.stars.toFixed(1)}</Text>
         </View>
 
+        <Text style={styles.sectionTitle}>Mô tả</Text>
         <Text style={styles.contentDescription}>{item.description}</Text>
 
         <View style={styles.contentTags}>
@@ -60,7 +62,7 @@ const DetailScreen = ({ route, navigation }) => {
         <TouchableOpacity onPress={handleAddToOrder}>
           <View style={styles.contentCTA}>
             <Text style={styles.contentCTAIcon}>+</Text>
-            <Text style={styles.contentCTAText}>Add to order</Text>
+            <Text style={styles.addToCartBtnText}>Thêm vào giỏ</Text>
           </View>
         </TouchableOpacity>
       </ScrollView>

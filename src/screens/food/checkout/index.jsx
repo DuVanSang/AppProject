@@ -17,7 +17,6 @@ const CheckoutScreen = ({ navigation }) => {
   const dispatch = useDispatch()
   const { restaurant, items, total, address, paymentType } = useSelector(state => state.order)
 
-  // Lấy phí giao hàng từ nhà hàng (nếu có), mặc định 0
   const deliveryCost = restaurant?.deliveryCost || 0;
   // State coupon được chọn
   const [selectedCoupon, setSelectedCoupon] = React.useState(null);
@@ -57,21 +56,21 @@ const CheckoutScreen = ({ navigation }) => {
 
     navigation.navigate('Home')
     Alert.alert(
-      'Order Placed!',
-      'Your order is being processed, you can see it in your orders',
-      [{ text: 'View Order', onPress: () => navigation.navigate('Orders', { screen: 'Home' }) }, { text: 'Close' }],
+      'Đặt hàng thành công!',
+      'Đơn hàng của bạn đang được xử lý, bạn có thể xem nó trong danh sách đơn hàng',
+      [{ text: 'Xem đơn hàng', onPress: () => navigation.navigate('Đơn hàng', { screen: 'Home' }) }, { text: 'Close' }],
       { userInterfaceStyle: 'light' }
     )
   }
 
   return (
     <View style={styles.container}>
-      <NavigationHeader text="Checkout" logoUrl={restaurant.logoUrl} />
+      <NavigationHeader text="Thanh toán" logoUrl={restaurant.logoUrl} />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Address */}
         <View style={styles.addressContainer}>
-          <Text style={styles.addressTitle}>Select Address</Text>
+          <Text style={styles.addressTitle}>Địa chỉ</Text>
           {address ? (
             <View style={styles.addressSelected}>
               <View style={styles.addressSelectedData}>
@@ -97,7 +96,7 @@ const CheckoutScreen = ({ navigation }) => {
             <TouchableOpacity onPress={() => navigation.navigate('Addresses')}>
               <View style={styles.addAddressBtn}>
                 <Text style={styles.addAddressBtnIcon}>+</Text>
-                <Text style={styles.addAddressBtnText}>Select an address</Text>
+                <Text style={styles.addAddressBtnText}>Chọn địa chỉ</Text>
               </View>
             </TouchableOpacity>
           )}
@@ -106,14 +105,14 @@ const CheckoutScreen = ({ navigation }) => {
         {/* Discount Code */}
         <View style={styles.discountContainer}>
           {!selectedCoupon && (
-            <Text style={styles.discountText}>Do you have a discount coupon?</Text>
+            <Text style={styles.discountText}>Mã giảm giá</Text>
           )}
           <TouchableOpacity onPress={() => navigation.navigate('Coupon', {
             onSelectCoupon: (coupon) => setSelectedCoupon(coupon)
           })}>
             <View style={styles.discountBtn}>
               <Text style={styles.discountBtnIcon}>+</Text>
-              <Text style={styles.discountBtnText}>Add coupon</Text>
+              <Text style={styles.discountBtnText}>Thêm mã giảm giá</Text>
             </View>
           </TouchableOpacity>
           {selectedCoupon && (
@@ -131,10 +130,10 @@ const CheckoutScreen = ({ navigation }) => {
             <View style={styles.paymentContainer}>
               <View style={styles.paymentOption}>
                 <MaterialCommunityIcons name="credit-card-outline" size={24} color={theme.colors.black} />
-                <Text style={styles.paymentOptionText}>Credit/Debit Card</Text>
+                <Text style={styles.paymentOptionText}>Thẻ tín dụng</Text>
               </View>
               <View style={styles.paymentRight}>
-                <Text style={styles.paymentRightText}>Delivery:</Text>
+                <Text style={styles.paymentRightText}>Phí giao hàng:</Text>
                 <Text style={styles.paymentRightFee}>{deliveryCost === 0 ? 'Free' : `$${deliveryCost.toFixed(2)}`}</Text>
                 <TouchableOpacity onPress={() => navigation.navigate('Payment')}>
                   <MaterialIcons
@@ -150,7 +149,7 @@ const CheckoutScreen = ({ navigation }) => {
             <View style={styles.paymentContainer}>
               <View style={styles.paymentOption}>
                 <MaterialCommunityIcons name="cash" size={24} color={theme.colors.black} />
-                <Text style={styles.paymentOptionText}>Pay Cash</Text>
+                <Text style={styles.paymentOptionText}>Thanh toán tiền mặt</Text>
               </View>
               <View style={styles.paymentRight}>
                 <Text style={styles.paymentRightText}>Delivery:</Text>
@@ -169,7 +168,7 @@ const CheckoutScreen = ({ navigation }) => {
             <TouchableOpacity onPress={() => navigation.navigate('Payment')}>
               <View style={styles.addAddressBtn}>
                 <Text style={styles.addAddressBtnIcon}>+</Text>
-                <Text style={styles.addAddressBtnText}>Select a payment method</Text>
+                <Text style={styles.addAddressBtnText}>Chọn phương thức thanh toán</Text>
               </View>
             </TouchableOpacity>
           )}
@@ -179,20 +178,20 @@ const CheckoutScreen = ({ navigation }) => {
 
         {/* Order Data & Details */}
         <View style={styles.orderData}>
-          <Text style={styles.orderDataTitle}>Order Data</Text>
+          <Text style={styles.orderDataTitle}>Thông tin đơn hàng</Text>
           <View style={styles.orderDataItem}>
-            <Text style={styles.orderDataItemText}>Restaurant Name</Text>
+            <Text style={styles.orderDataItemText}>Tên quán</Text>
             <Text style={styles.orderDataItemText}>{restaurant.name}</Text>
           </View>
           <View style={styles.orderDataItem}>
-            <Text style={styles.orderDataItemText}>Order Date</Text>
+            <Text style={styles.orderDataItemText}>Ngày đặt</Text>
             <Text style={styles.orderDataItemText}>{new Date().toLocaleString()}</Text>
           </View>
         </View>
 
         <View style={styles.orderDetails}>
           <View>
-            <Text style={styles.orderDataTitle}>Order Details</Text>
+            <Text style={styles.orderDataTitle}>Chi tiết đơn hàng</Text>
             {items.map(item => (
               <View key={item.item.name} style={styles.orderDetailsItem}>
                 <Text style={styles.orderDetailsItemText}>{item.item.name}</Text>
@@ -204,7 +203,7 @@ const CheckoutScreen = ({ navigation }) => {
       </ScrollView>
 
       <OrderResumeCTA
-        text="Place Order"
+        text="Đặt hàng"
         total={totalWithDelivery > 0 ? totalWithDelivery : 0}
         navigateTo="Home"
         handlePlaceOrder={handlePlaceOrder}

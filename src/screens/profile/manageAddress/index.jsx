@@ -25,12 +25,12 @@ const ManageAddressScreen = ({ route, navigation }) => {
 
   const handleDelete = () => {
     return Alert.alert(
-      'Delete',
-      'Are you sure you want to delete this address?',
+      'Xoá',
+      'Bạn có chắc chắn muốn xoá địa chỉ này không?',
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: 'Huỷ', style: 'cancel' },
         {
-          text: 'Delete',
+          text: 'Xoá',
           style: 'destructive',
           onPress: () => {
             dispatch(removeAddress({ email: user.email, id: address.id }))
@@ -55,15 +55,15 @@ const ManageAddressScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <NavigationHeader text="Manage Address" />
+      <NavigationHeader text="Quản lý địa chỉ" />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.inputContainer}>
           <Input
-            label="Name"
+            label="Tên"
             value={newAddress.name}
             onChangeText={text => setNewAddress(prev => ({ ...prev, name: text }))}
-            placeholder="Enter your name"
+            placeholder="Nhập tên"
             placeholderTextColor={theme.colors.black}
             autoCapitalize="words"
             autoComplete="name"
@@ -73,10 +73,10 @@ const ManageAddressScreen = ({ route, navigation }) => {
 
         <View style={styles.inputContainer}>
           <Input
-            label="Address"
+            label="Địa chỉ"
             value={newAddress.address}
             onChangeText={text => setNewAddress(prev => ({ ...prev, address: text }))}
-            placeholder="Enter your address"
+            placeholder="Nhập địa chỉ"
             placeholderTextColor={theme.colors.black}
             autoComplete="street-address"
             autoCorrect={false}
@@ -96,7 +96,7 @@ const ManageAddressScreen = ({ route, navigation }) => {
             label="Tag"
             value={newAddress.tag}
             onChangeText={text => setNewAddress(prev => ({ ...prev, tag: text }))}
-            placeholder="Enter a tag for this address"
+            placeholder="Nhập tag"
             placeholderTextColor={theme.colors.black}
             autoCapitalize="words"
             autoCorrect={false}
@@ -105,10 +105,10 @@ const ManageAddressScreen = ({ route, navigation }) => {
 
         <View style={styles.inputContainer}>
           <Input
-            label="Phone"
+            label="Số điện thoại"
             value={newAddress.phone}
             onChangeText={text => setNewAddress(prev => ({ ...prev, phone: text }))}
-            placeholder="Enter your phone"
+            placeholder="Nhập số điện thoại"
             placeholderTextColor={theme.colors.black}
             keyboardType="number-pad"
             autoCorrect={false}
@@ -119,13 +119,13 @@ const ManageAddressScreen = ({ route, navigation }) => {
 
         <TouchableOpacity onPress={handleDelete}>
           <View style={styles.deleteBtn}>
-            <Text style={styles.deleteBtnText}>Delete</Text>
+            <Text style={styles.deleteBtnText}>Xoá</Text>
           </View>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={handleSave}>
           <View style={styles.saveBtn}>
-            <Text style={styles.saveBtnText}>Save</Text>
+            <Text style={styles.saveBtnText}>Lưu</Text>
           </View>
         </TouchableOpacity>
       </ScrollView>

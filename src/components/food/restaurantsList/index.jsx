@@ -36,7 +36,7 @@ const RestaurantsList = ({
         <>
           {favoriteRestaurants.length !== 0 && (
             <View style={styles.restaurantsSection}>
-              <Text style={styles.restaurantsSectionHeading}>Your Favorite Places</Text>
+              <Text style={styles.restaurantsSectionHeading}>Quán ăn yêu thích của bạn</Text>
               <FlatList
                 data={favoriteRestaurants}
                 renderItem={({ item }) => <RestaurantItem restaurant={item} navigation={navigation} />}
@@ -50,7 +50,7 @@ const RestaurantsList = ({
 
           {featuredRestaurants.length !== 0 && (
             <View style={styles.restaurantsSection}>
-              <Text style={styles.restaurantsSectionHeading}>Featured Places</Text>
+              <Text style={styles.restaurantsSectionHeading}>Quán ăn nổi bật</Text>
               <FlatList
                 data={featuredRestaurants}
                 renderItem={({ item }) => <RestaurantItem restaurant={item} navigation={navigation} />}
@@ -64,7 +64,7 @@ const RestaurantsList = ({
 
           {fastestRestaurants.length !== 0 && (
             <View style={styles.restaurantsSection}>
-              <Text style={styles.restaurantsSectionHeading}>Fastest Places</Text>
+              <Text style={styles.restaurantsSectionHeading}>Quán ăn nhanh nhất</Text>
               <FlatList
                 data={fastestRestaurants}
                 renderItem={({ item }) => <RestaurantItem restaurant={item} navigation={navigation} />}

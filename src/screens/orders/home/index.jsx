@@ -22,8 +22,8 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerSubtitle}>Order History</Text>
-        <Text style={styles.headerTitle}>Look at your orders</Text>
+        <Text style={styles.headerSubtitle}>Lịch sử đơn hàng</Text>
+        <Text style={styles.headerTitle}>Xem các đơn hàng của bạn</Text>
       </View>
 
       {loading ? (
@@ -40,7 +40,7 @@ const HomeScreen = () => {
       ) : (
         <View style={styles.loadingErrorContainer}>
           <Ionicons name="ios-warning-outline" size={28} color={theme.colors.primary} />
-          <Text style={styles.loadingErrorText}>{error || "You don't have any orders yet"}</Text>
+          <Text style={styles.loadingErrorText}>{error || "Bạn chưa có đơn hàng nào"}</Text>
         </View>
       )}
     </View>

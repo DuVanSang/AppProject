@@ -14,12 +14,12 @@ const DetailScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <NavigationHeader text="Order" logoUrl={order.restaurantData.logoUrl} />
+      <NavigationHeader text="Đơn hàng" logoUrl={order.restaurantData.logoUrl} />
 
       <ScrollView style={styles.order} showsVerticalScrollIndicator={false}>
-        {/* Address */}
+        {/* Địa chỉ */}
         <View style={styles.addressContainer}>
-          <Text style={styles.addressTitle}>Address</Text>
+          <Text style={styles.addressTitle}>Địa chỉ</Text>
 
           <View style={styles.addressSelected}>
             <View style={styles.addressSelectedData}>
@@ -35,48 +35,48 @@ const DetailScreen = ({ navigation, route }) => {
           </View>
         </View>
 
-        {/* Discount Code */}
+        {/* Mã giảm giá */}
         <View style={styles.discountContainer}>
-          <Text style={styles.discountText}>No coupon added</Text>
-          <Text style={styles.discountQty}>Discount: $0.00</Text>
+          <Text style={styles.discountText}>Không có mã giảm giá</Text>
+          <Text style={styles.discountQty}>Giảm giá: 0.00₫</Text>
         </View>
 
-        {/* Payment Method */}
+        {/* Phương thức thanh toán */}
         <View>
           <View style={styles.paymentContainer}>
             {order.payment === 'Credit/Debit Card' ? (
               <View style={styles.paymentOption}>
                 <MaterialCommunityIcons name="credit-card-outline" size={24} color={theme.colors.black} />
-                <Text style={styles.paymentOptionText}>Credit/Debit Card</Text>
+                <Text style={styles.paymentOptionText}>Thẻ tín dụng/Thẻ ghi nợ</Text>
               </View>
             ) : (
               <View style={styles.paymentOption}>
                 <MaterialCommunityIcons name="cash" size={24} color={theme.colors.black} />
-                <Text style={styles.paymentOptionText}>Pay Cash</Text>
+                <Text style={styles.paymentOptionText}>Thanh toán tiền mặt</Text>
               </View>
             )}
-            <Text style={styles.paymentRight}>${order.total.toFixed(2)}</Text>
+            <Text style={styles.paymentRight}>{order.total.toFixed(2)}₫</Text>
           </View>
         </View>
 
         <View style={styles.separatorBar}></View>
 
-        {/* Order Data & Details */}
+        {/* Thông tin đơn hàng */}
         <View style={styles.orderData}>
-          <Text style={styles.orderDataTitle}>Order Data</Text>
+          <Text style={styles.orderDataTitle}>Thông tin đơn hàng</Text>
           <View style={styles.orderDataItem}>
-            <Text style={styles.orderDataItemText}>Restaurant Name</Text>
+            <Text style={styles.orderDataItemText}>Tên nhà hàng</Text>
             <Text style={styles.orderDataItemText}>{order.restaurantData.name}</Text>
           </View>
           <View style={styles.orderDataItem}>
-            <Text style={styles.orderDataItemText}>Order Date</Text>
+            <Text style={styles.orderDataItemText}>Ngày đặt hàng</Text>
             <Text style={styles.orderDataItemText}>{new Date(order.date).toLocaleString()}</Text>
           </View>
         </View>
 
         <View style={styles.orderDetails}>
           <View>
-            <Text style={styles.orderDataTitle}>Order Details</Text>
+            <Text style={styles.orderDataTitle}>Chi tiết đơn hàng</Text>
             {order.items.map(item => (
               <View key={item.item.name} style={styles.orderDataItem}>
                 <Text style={styles.orderDataItemText}>{item.item.name}</Text>

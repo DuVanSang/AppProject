@@ -14,7 +14,7 @@ const AddressesScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <NavigationHeader text="Your Addresses" />
+      <NavigationHeader text="Địa chỉ của bạn" />
 
       <ScrollView>
         <View>
@@ -39,7 +39,7 @@ const AddressesScreen = ({ navigation }) => {
           <TouchableOpacity onPress={() => navigation.navigate('AddAddress')}>
             <View style={styles.addAddressBtn}>
               <Text style={styles.addAddressBtnIcon}>+</Text>
-              <Text style={styles.addAddressBtnText}>Add a new address</Text>
+              <Text style={styles.addAddressBtnText}>Thêm địa chỉ mới</Text>
             </View>
           </TouchableOpacity>
         </View>

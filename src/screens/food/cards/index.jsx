@@ -50,7 +50,7 @@ const CardsScreen = ({ navigation }) => {
                 />
                 <View style={styles.cardDataContent}>
                   <Text style={styles.cardDataNumber}>{showCardNumberLastDigits(card.cardNumber)}</Text>
-                  <Text style={styles.cardDataType}>Credit/Debit Card</Text>
+                  <Text style={styles.cardDataType}>Thẻ tín dụng</Text>
                 </View>
               </View>
 

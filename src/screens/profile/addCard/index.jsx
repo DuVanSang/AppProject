@@ -24,12 +24,12 @@ const AddCardScreen = ({ navigation }) => {
 
   const handleSave = () => {
     if (!card.cardNumber || !card.cardHolder || !card.expirationDate || !card.cvv) {
-      return Alert.alert('Error', 'Please fill all the fields', [{ text: 'OK' }], {
+      return Alert.alert('Lỗi', 'Vui lòng nhập đầy đủ thông tin', [{ text: 'OK' }], {
         userInterfaceStyle: 'light'
       });
     }
     if (!user || !user.email) {
-      return Alert.alert('Error', 'User not found. Please login again.', [{ text: 'OK' }]);
+      return Alert.alert('Lỗi', 'Không tìm thấy người dùng, vui lòng đăng nhập lại.', [{ text: 'OK' }]);
     }
     dispatch(addCard({ email: user.email, card }))
       .unwrap()
@@ -39,7 +39,7 @@ const AddCardScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <NavigationHeader text="Add new Card" />
+      <NavigationHeader text="Thêm thẻ tín dụng" />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
@@ -86,10 +86,10 @@ const AddCardScreen = ({ navigation }) => {
 
         <View style={styles.inputContainer}>
           <Input
-            label="Card Number"
+            label="Số thẻ"
             value={card.cardNumber}
             onChangeText={text => setCard({ ...card, cardNumber: text })}
-            placeholder="Enter the card number"
+            placeholder="Nhập số thẻ"
             placeholderTextColor={theme.colors.black}
             keyboardType="number-pad"
             autoComplete="off"
@@ -100,10 +100,10 @@ const AddCardScreen = ({ navigation }) => {
 
         <View style={styles.inputContainer}>
           <Input
-            label="Card Holder"
+            label="Tên chủ thẻ"
             value={card.cardHolder}
             onChangeText={text => setCard({ ...card, cardHolder: text })}
-            placeholder="Enter the card holder"
+            placeholder="Nhập tên chủ thẻ"
             placeholderTextColor={theme.colors.black}
             autoComplete="name"
             autoCapitalize="words"
@@ -114,7 +114,7 @@ const AddCardScreen = ({ navigation }) => {
 
         <View style={styles.rowInputContainer}>
           <Input
-            label="Expiration Date"
+            label="Ngày hết hạn"
             value={card.expirationDate}
             onChangeText={text => setCard({ ...card, expirationDate: text })}
             placeholder="MM/YY"
@@ -128,7 +128,7 @@ const AddCardScreen = ({ navigation }) => {
             label="CVV"
             value={card.cvv}
             onChangeText={text => setCard({ ...card, cvv: text })}
-            placeholder="Enter the cvv"
+            placeholder="Nhập CVV"
             placeholderTextColor={theme.colors.black}
             keyboardType="number-pad"
             autoComplete="off"
@@ -139,7 +139,7 @@ const AddCardScreen = ({ navigation }) => {
 
         <TouchableOpacity onPress={handleSave}>
           <View style={styles.saveBtn}>
-            <Text style={styles.saveBtnText}>Save</Text>
+            <Text style={styles.saveBtnText}>Lưu</Text>
           </View>
         </TouchableOpacity>
       </ScrollView>

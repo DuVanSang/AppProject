@@ -30,14 +30,14 @@ const RegisterScreen = ({ navigation }) => {
     const { fullName, email, phone, password, confirmPassword } = formState
 
     if (!fullName || !email || !phone || !password || !confirmPassword) {
-      setFormError('All fields are required')
+      setFormError('Vui lòng nhập đầy đủ thông tin!')
       setTimeout(() => {
         setFormError('')
       }, 4000)
       return
     }
     if (password !== confirmPassword) {
-      setFormError('Passwords do not match')
+      setFormError('Mật khẩu không khớp!')
       setTimeout(() => {
         setFormError('')
       }, 4000)
@@ -154,7 +154,7 @@ const RegisterScreen = ({ navigation }) => {
               {loading ? (
                 <ActivityIndicator size="small" color={theme.colors.black} />
               ) : (
-                <Text style={styles.buttonText}>Register</Text>
+                <Text style={styles.buttonText}>Đăng ký</Text>
               )}
             </View>
           </TouchableOpacity>

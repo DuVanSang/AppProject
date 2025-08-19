@@ -46,7 +46,7 @@ const AddAddressScreen = ({ navigation, route }) => {
 
   const handleSave = () => {
     if (!address.name || !address.address || !address.tag || !address.phone) {
-      return Alert.alert('Error', 'Please fill all the fields', [{ text: 'OK' }], {
+      return Alert.alert('Lỗi', 'Vui lòng nhập đầy đủ thông tin', [{ text: 'OK' }], {
         userInterfaceStyle: 'light'
       })
     }
@@ -57,15 +57,15 @@ const AddAddressScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <NavigationHeader text="Add new Address" />
+      <NavigationHeader text="Thêm địa chỉ mới" />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.inputContainer}>
           <Input
-            label="Name"
+            label="Tên"
             value={address.name}
             onChangeText={text => setAddress(prev => ({ ...prev, name: text }))}
-            placeholder="Enter your name"
+            placeholder="Nhập tên"
             placeholderTextColor={theme.colors.black}
             autoCapitalize="words"
             autoComplete="name"
@@ -75,10 +75,10 @@ const AddAddressScreen = ({ navigation, route }) => {
 
         <View style={styles.inputContainer}>
           <Input
-            label="Address"
+            label="Địa chỉ"
             value={address.address}
             onChangeText={text => setAddress(prev => ({ ...prev, address: text }))}
-            placeholder="Enter your address"
+            placeholder="Nhập địa chỉ"
             placeholderTextColor={theme.colors.black}
             autoComplete="street-address"
             autoCorrect={false}
@@ -110,7 +110,7 @@ const AddAddressScreen = ({ navigation, route }) => {
             label="Tag"
             value={address.tag}
             onChangeText={text => setAddress(prev => ({ ...prev, tag: text }))}
-            placeholder="Enter a tag for this address"
+            placeholder="Nhập tag cho địa chỉ"
             placeholderTextColor={theme.colors.black}
             autoCapitalize="words"
             autoCorrect={false}
@@ -119,10 +119,10 @@ const AddAddressScreen = ({ navigation, route }) => {
 
         <View style={styles.inputContainer}>
           <Input
-            label="Phone"
+            label="Số điện thoại"
             value={address.phone}
             onChangeText={text => setAddress(prev => ({ ...prev, phone: text }))}
-            placeholder="Enter your phone"
+            placeholder="Nhập số điện thoại"
             placeholderTextColor={theme.colors.black}
             keyboardType="number-pad"
             autoCorrect={false}
@@ -131,7 +131,7 @@ const AddAddressScreen = ({ navigation, route }) => {
 
         <TouchableOpacity onPress={handleSave}>
           <View style={styles.saveBtn}>
-            <Text style={styles.saveBtnText}>Save</Text>
+            <Text style={styles.saveBtnText}>Lưu</Text>
           </View>
         </TouchableOpacity>
       </ScrollView>

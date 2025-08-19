@@ -25,7 +25,7 @@ const LoginScreen = ({ navigation }) => {
     const { email, password } = formState
 
     if (!email || !password) {
-      setFormError('All fields are required')
+      setFormError('Vui lòng nhập đầy đủ thông tin!')
       setTimeout(() => {
         setFormError('')
       }, 4000)
@@ -94,15 +94,15 @@ const LoginScreen = ({ navigation }) => {
               {loading ? (
                 <ActivityIndicator size="small" color={theme.colors.black} />
               ) : (
-                <Text style={styles.buttonText}>Login</Text>
+                <Text style={styles.buttonText}>Đăng nhập</Text>
               )}
             </View>
           </TouchableOpacity>
 
           <View style={styles.linkContainer}>
-            <Text style={styles.linkText}>Don't have an account?</Text>
+            <Text style={styles.linkText}>Chưa có tài khoản?</Text>
             <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-              <Text style={styles.link}>Register</Text>
+              <Text style={styles.link}>Đăng ký</Text>
             </TouchableOpacity>
           </View>
         </View>

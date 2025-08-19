@@ -3,6 +3,14 @@ import { collection, addDoc } from 'firebase/firestore'
 
 // Lấy các đơn hàng theo email người dùng từ Realtime DB
 export const getOrdersFromUser = async email => {
+  // Hàm kiểm tra và cập nhật trạng thái đơn hàng nếu đã giao
+  const updateOrderStatus = order => {
+    if (order.status === 'delivering' && order.deliveredAt && Date.now() >= order.deliveredAt) {
+      return { ...order, status: 'delivered' }
+    }
+    return order
+  }
+
   try {
     const response = await fetch(`${REALTIME_DB_URL}/orders.json`)
     if (!response.ok) {
@@ -12,9 +20,23 @@ export const getOrdersFromUser = async email => {
     const data = await response.json()
 
     if (data) {
-      return Object.entries(data)
+      const orders = Object.entries(data)
         .filter(([key, order]) => order.userId === email)
         .map(([key, order]) => ({ ...order, id: key }))
+
+      // Cập nhật trạng thái đơn hàng nếu đã giao
+      for (const order of orders) {
+        if (order.status === 'delivering' && order.deliveredAt && Date.now() >= order.deliveredAt) {
+          // Gọi API cập nhật trạng thái trên DB
+          await fetch(`${REALTIME_DB_URL}/orders/${order.id}.json`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: 'delivered' })
+          })
+          order.status = 'delivered'
+        }
+      }
+      return orders
     } else {
       return []
     }
@@ -25,6 +47,12 @@ export const getOrdersFromUser = async email => {
 
 // Tạo đơn hàng mới
 export const createOrder = async order => {
+  // Tính thời gian giao dự kiến
+  const avgTime = order.restaurantData?.avgTime || 30 // phút
+  const now = Date.now()
+  order.status = 'delivering'
+  order.deliveredAt = now + avgTime * 60 * 1000 // ms
+
   try {
     // Gửi lên Realtime DB
     await fetch(`${REALTIME_DB_URL}/orders.json`, {

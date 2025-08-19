@@ -2,7 +2,7 @@ import { firestore } from '../firebase';
 import { collection, addDoc, getDocs, query, where, updateDoc } from 'firebase/firestore';
 
 
-const sampleRestaurants = [
+// const sampleRestaurants = [
   // {
   //   name: 'Pizza ABC',
   //   description: 'Pizza ngon nhất thành phố',
@@ -222,10 +222,34 @@ const sampleRestaurants = [
   //     }
   //   ]
   // }
-  
+  const sampleRestaurants = [
+    {
+      name: 'Pizza ABC',
+      tags: ['Pizza'], // tag bạn muốn thêm
+      categories: ['Pizza'],
+      menu: [
+        {
+          name: 'Pizza Hải Sản',
+          description: 'Pizza hải sản tươi ngon, phô mai kéo sợi.',
+          imgUrl: 'https://i.pinimg.com/736x/99/98/1e/99981efdb1aac8788bc1e8922af67719.jpg',
+          price: 13.5,
+          stars: 4.9,
+          category: 'Pizza'
+        },
+        {
+          name: 'Pizza Thập Cẩm',
+          description: 'Pizza nhiều topping hấp dẫn.',
+          imgUrl: 'https://i.pinimg.com/736x/6e/25/5e/6e255e056d2210be94c4bdcc9af292a2.jpg',
+          price: 12.0,
+          stars: 4.8,
+          category: 'Pizza'
+        }
+      ]
+    }
+  ];
 
 
-];
+
 
 export const seedRestaurants = async () => {
   for (const restaurant of sampleRestaurants) {
